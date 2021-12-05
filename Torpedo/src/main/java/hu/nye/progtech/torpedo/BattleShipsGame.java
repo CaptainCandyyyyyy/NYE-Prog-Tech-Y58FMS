@@ -3,6 +3,10 @@ package hu.nye.progtech.torpedo;
 import java.util.Random;
 
 public class BattleShipsGame {
+    public GameBoard getGameBoard() {
+        return gameBoard;
+    }
+
     private GameBoard gameBoard;
     private Player currentPlayer;
     private Player winner;
@@ -10,41 +14,89 @@ public class BattleShipsGame {
 
     public BattleShipsGame() {
         winner = null;
-
-
-
-        Random rand = new Random();
-        int startingPlayer = rand.nextInt(2);
-
-        if (startingPlayer == 0 ) {
-            currentPlayer = Player.PLAYER;
-        } else {
-            currentPlayer = Player.COMPUTER;
-        }
-
+        currentPlayer = Player.PLAYER;
         gameBoard = new GameBoard();
     }
 
-    public void printBoard(){
+    public void printPlayerBoard(){
         Board boardToprint;
-        Board board = currentPlayer == Player.PLAYER ? gameBoard.ComputerBoard() : gameBoard.PlayerBoard();
-        for(int row = 0; row < 10; row++)
-        {
+        Board board = gameBoard.PlayerBoard();
+
+        System.out.print("  ");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(' ');
+            System.out.print(i+1);
+        }
+        System.out.println();
+        for(int row = 0; row < 10; row++) {
+            if (row == 9){
+                System.out.print(row+1);
+            }
+            else{
+                System.out.print(' ');
+                System.out.print(row+1);
+            }
             for(int col = 0; col < 10; col++){
                 char sign;
-                TileType state = board.Get(row, col);
+                TileType state = board.Get(col, row);
                 switch(state){
                     case EMPTY:
                         sign = ' ';
                         break;
                     case HIT:
-                        sign = 'H';
+                        sign = 'X';
                         break;
                     case MISS:
-                        sign = 'M';
+                        sign = 'O';
                         break;
                     case SHIP:
                         sign = 'S';
+                        break;
+                    default:
+                        sign = 'e';
+                        break;
+                }
+                System.out.print("|" + sign);
+
+            }
+            System.out.print("|");
+            System.out.println();
+        }
+
+    }
+    public void printComputerBoard(){
+        Board boardToprint;
+        Board board = gameBoard.ComputerBoard();
+
+        System.out.print("  ");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(' ');
+            System.out.print(i+1);
+        }
+        System.out.println();
+        for(int row = 0; row < 10; row++) {
+            if (row == 9){
+                System.out.print(row+1);
+            }
+            else{
+                System.out.print(' ');
+                System.out.print(row+1);
+            }
+            for(int col = 0; col < 10; col++){
+                char sign;
+                TileType state = board.Get(col, row);
+                switch(state){
+                    case EMPTY:
+                        sign = ' ';
+                        break;
+                    case HIT:
+                        sign = 'X';
+                        break;
+                    case MISS:
+                        sign = 'O';
+                        break;
+                    case SHIP:
+                        sign = ' ';
                         break;
                     default:
                         sign = 'e';

@@ -19,13 +19,13 @@ public class GameBoard {
     }
 
     public TileType Shoot(Player currentPlayer, int x, int y){
-        Board board = currentPlayer == Player.PLAYER ? PlayerBoard() : ComputerBoard();
+        Board board = currentPlayer == Player.PLAYER ? ComputerBoard() : PlayerBoard();
         Update(board, x, y);
 
         return board.Get(x,y);
     }
 
     private void Update(Board board, int x, int y) {
-            board.Set(x,y, board.Get(x,y) == TileType.SHIP ? TileType.HIT : TileType.MISS );
+            board.Set(x,y, board.Get(x,y) == TileType.SHIP || board.Get(x,y) == TileType.HIT ? TileType.HIT : TileType.MISS );
     }
 }

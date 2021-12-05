@@ -36,9 +36,15 @@ class BattleShipsGameTests {
         assertTrue(result != null);
     }
     @Test
-    void printBoardReturns() {
+    void printPLayerBoardReturns() {
         BattleShipsGame game = new BattleShipsGame();
-        game.printBoard();
+        game.printPlayerBoard();
+        assertTrue(!outContent.toString().equals("") );
+    }
+    @Test
+    void printComputerBoardReturns() {
+        BattleShipsGame game = new BattleShipsGame();
+        game.printComputerBoard();
         assertTrue(!outContent.toString().equals("") );
     }
 }
