@@ -26,24 +26,36 @@ class BattleShipsGameTests {
 
     @Test
     void IsInProgressShouldReturnTrue() {
-        BattleShipsGame game = new BattleShipsGame();
+        Board playerBoard = new Board();
+        Board computerBoard = new Board();
+        GameBoard gameBoard = new GameBoard(playerBoard, computerBoard);
+        BattleShipsGame game = new BattleShipsGame(gameBoard);
         assertTrue(game.IsInProgress());
     }
     @Test
     void TakeTurnShouldReturnTileType() {
-        BattleShipsGame game = new BattleShipsGame();
+        Board playerBoard = new Board();
+        Board computerBoard = new Board();
+        GameBoard gameBoard = new GameBoard(playerBoard, computerBoard);
+        BattleShipsGame game = new BattleShipsGame(gameBoard);
         TileType result = game.TakeTurn(0, 0);
         assertTrue(result != null);
     }
     @Test
     void printPLayerBoardReturns() {
-        BattleShipsGame game = new BattleShipsGame();
+        Board playerBoard = new Board();
+        Board computerBoard = new Board();
+        GameBoard gameBoard = new GameBoard(playerBoard, computerBoard);
+        BattleShipsGame game = new BattleShipsGame(gameBoard);
         game.printPlayerBoard();
         assertTrue(!outContent.toString().equals("") );
     }
     @Test
     void printComputerBoardReturns() {
-        BattleShipsGame game = new BattleShipsGame();
+        Board playerBoard = new Board();
+        Board computerBoard = new Board();
+        GameBoard gameBoard = new GameBoard(playerBoard, computerBoard);
+        BattleShipsGame game = new BattleShipsGame(gameBoard);
         game.printComputerBoard();
         assertTrue(!outContent.toString().equals("") );
     }

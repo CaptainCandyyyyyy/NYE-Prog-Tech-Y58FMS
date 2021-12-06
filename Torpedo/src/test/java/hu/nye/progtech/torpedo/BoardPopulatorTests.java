@@ -14,15 +14,19 @@ class BoardPopulatorTests {
 
     @Test
     void PLayerBoardShouldFillUpBoard() {
-        BattleShipsGame game = new BattleShipsGame();
-        Board playerBoard = game.getGameBoard().PlayerBoard();
+        Board playerBoard = new Board();
+        Board computerBoard = new Board();
+        GameBoard gameBoard = new GameBoard(playerBoard, computerBoard);
+        BattleShipsGame game = new BattleShipsGame(gameBoard);
         BoardPopulator.placePlayerBoard(0,1,1,2, playerBoard);
         assertTrue(playerBoard.Get(0,1) == TileType.SHIP);
     }
     @Test
     void ComputerBoardShouldFillUpBoard() {
-        BattleShipsGame game = new BattleShipsGame();
-        Board computerBoard = game.getGameBoard().ComputerBoard();
+        Board playerBoard = new Board();
+        Board computerBoard = new Board();
+        GameBoard gameBoard = new GameBoard(playerBoard, computerBoard);
+        BattleShipsGame game = new BattleShipsGame(gameBoard);
         BoardPopulator.placeComputerBoard(computerBoard);
         int counter = 0;
         for (int i = 0; i < 10; i++) {

@@ -8,18 +8,24 @@ import org.junit.jupiter.api.Test;
 
         @Test
         void ShootShouldReturnTileType() {
-            GameBoard gameBoard = new GameBoard();
+            Board playerBoard = new Board();
+            Board computerBoard = new Board();
+            GameBoard gameBoard = new GameBoard(playerBoard, computerBoard);
             TileType result = gameBoard.Shoot(Player.PLAYER,0,0);
             assertTrue(result != null);
         }
         @Test
         void PLayerBoardShouldNotBeNull() {
-            GameBoard gameBoard = new GameBoard();
+            Board playerBoard = new Board();
+            Board computerBoard = new Board();
+            GameBoard gameBoard = new GameBoard(playerBoard, computerBoard);
             assertTrue(gameBoard.PlayerBoard() != null);
         }
         @Test
         void ComputerBoardShouldNotBeNull() {
-            GameBoard gameBoard = new GameBoard();
+            Board playerBoard = new Board();
+            Board computerBoard = new Board();
+            GameBoard gameBoard = new GameBoard(playerBoard, computerBoard);
             assertTrue(gameBoard.ComputerBoard() != null);
         }
     }

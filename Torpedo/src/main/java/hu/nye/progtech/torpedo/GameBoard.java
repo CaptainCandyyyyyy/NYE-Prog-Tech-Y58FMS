@@ -5,9 +5,9 @@ public class GameBoard {
     private Board playerBoard;
     private Board computerBoard;
 
-    public GameBoard() {
-        playerBoard = new Board();
-        computerBoard = new Board();
+    public GameBoard(Board playerBoard, Board computerBoard) {
+        this.playerBoard = playerBoard;
+        this.computerBoard = computerBoard;
     }
 
     public Board PlayerBoard() {

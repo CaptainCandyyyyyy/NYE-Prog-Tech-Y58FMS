@@ -12,10 +12,10 @@ public class BattleShipsGame {
     private Player winner;
 
 
-    public BattleShipsGame() {
+    public BattleShipsGame(GameBoard gameboard) {
         winner = null;
         currentPlayer = Player.PLAYER;
-        gameBoard = new GameBoard();
+        this.gameBoard = gameboard;
     }
 
     public void printPlayerBoard(){
