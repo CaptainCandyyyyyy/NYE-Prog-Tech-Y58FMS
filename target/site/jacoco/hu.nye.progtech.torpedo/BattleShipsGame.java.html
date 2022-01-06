@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="hu"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BattleShipsGame.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">torpedo</a> &gt; <a href="index.source.html" class="el_package">hu.nye.progtech.torpedo</a> &gt; <span class="el_source">BattleShipsGame.java</span></div><h1>BattleShipsGame.java</h1><pre class="source lang-java linenums">package hu.nye.progtech.torpedo;
+
+/**
+ * Starts the game loop.
+ */
+
+public class BattleShipsGame {
+    private GameBoard gameBoard;
+    private Player currentPlayer;
+    private Player winner;
+
+<span class="fc" id="L12">    public BattleShipsGame(GameBoard gameboard) {</span>
+<span class="fc" id="L13">        winner = null;</span>
+<span class="fc" id="L14">        currentPlayer = Player.PLAYER;</span>
+<span class="fc" id="L15">        this.gameBoard = gameboard;</span>
+<span class="fc" id="L16">    }</span>
+
+    /**
+     * Starts the game loop.
+     */
+
+    public GameBoard getGameBoard() {
+<span class="nc" id="L23">        return gameBoard;</span>
+    }
+
+    /**
+     * Starts the game loop.
+     */
+
+    public void printPlayerBoard() {
+        Board boardToprint;
+<span class="fc" id="L32">        Board board = gameBoard.playerBoard();</span>
+
+<span class="fc" id="L34">        System.out.print(&quot;  &quot;);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        for (int i = 0; i &lt; 10; i++) {</span>
+<span class="fc" id="L36">            System.out.print(' ');</span>
+<span class="fc" id="L37">            System.out.print(i + 1);</span>
+        }
+<span class="fc" id="L39">        System.out.println();</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for (int row = 0; row &lt; 10; row++) {</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">            if (row == 9) {</span>
+<span class="fc" id="L42">                System.out.print(row + 1);</span>
+            } else {
+<span class="fc" id="L44">                System.out.print(' ');</span>
+<span class="fc" id="L45">                System.out.print(row + 1);</span>
+            }
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            for (int col = 0; col &lt; 10; col++) {</span>
+                char sign;
+<span class="fc" id="L49">                TileType state = board.get(col, row);</span>
+<span class="pc bpc" id="L50" title="4 of 5 branches missed.">                switch (state) {</span>
+                    case EMPTY:
+<span class="fc" id="L52">                        sign = ' ';</span>
+<span class="fc" id="L53">                        break;</span>
+                    case HIT:
+<span class="nc" id="L55">                        sign = 'X';</span>
+<span class="nc" id="L56">                        break;</span>
+                    case MISS:
+<span class="nc" id="L58">                        sign = 'O';</span>
+<span class="nc" id="L59">                        break;</span>
+                    case SHIP:
+<span class="nc" id="L61">                        sign = 'S';</span>
+<span class="nc" id="L62">                        break;</span>
+                    default:
+<span class="nc" id="L64">                        sign = 'e';</span>
+                        break;
+                }
+<span class="fc" id="L67">                System.out.print(&quot;|&quot; + sign);</span>
+
+            }
+<span class="fc" id="L70">            System.out.print(&quot;|&quot;);</span>
+<span class="fc" id="L71">            System.out.println();</span>
+        }
+
+<span class="fc" id="L74">    }</span>
+
+    /**
+     * Starts the game loop.
+     */
+
+    public void printComputerBoard() {
+        Board boardToprint;
+<span class="fc" id="L82">        Board board = gameBoard.computerBoard();</span>
+
+<span class="fc" id="L84">        System.out.print(&quot;  &quot;);</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        for (int i = 0; i &lt; 10; i++) {</span>
+<span class="fc" id="L86">            System.out.print(' ');</span>
+<span class="fc" id="L87">            System.out.print(i + 1);</span>
+        }
+<span class="fc" id="L89">        System.out.println();</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        for (int row = 0; row &lt; 10; row++) {</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">            if (row == 9) {</span>
+<span class="fc" id="L92">                System.out.print(row + 1);</span>
+            } else {
+<span class="fc" id="L94">                System.out.print(' ');</span>
+<span class="fc" id="L95">                System.out.print(row + 1);</span>
+            }
+<span class="fc bfc" id="L97" title="All 2 branches covered.">            for (int col = 0; col &lt; 10; col++) {</span>
+                char sign;
+<span class="fc" id="L99">                TileType state = board.get(col, row);</span>
+<span class="pc bpc" id="L100" title="4 of 5 branches missed.">                switch (state) {</span>
+                    case EMPTY:
+<span class="fc" id="L102">                        sign = ' ';</span>
+<span class="fc" id="L103">                        break;</span>
+                    case HIT:
+<span class="nc" id="L105">                        sign = 'X';</span>
+<span class="nc" id="L106">                        break;</span>
+                    case MISS:
+<span class="nc" id="L108">                        sign = 'O';</span>
+<span class="nc" id="L109">                        break;</span>
+                    case SHIP:
+<span class="nc" id="L111">                        sign = ' ';</span>
+<span class="nc" id="L112">                        break;</span>
+                    default:
+<span class="nc" id="L114">                        sign = 'e';</span>
+                        break;
+                }
+<span class="fc" id="L117">                System.out.print(&quot;|&quot; + sign);</span>
+
+            }
+<span class="fc" id="L120">            System.out.print(&quot;|&quot;);</span>
+<span class="fc" id="L121">            System.out.println();</span>
+        }
+
+<span class="fc" id="L124">    }</span>
+
+    public boolean isInProgress() {
+<span class="pc bpc" id="L127" title="1 of 2 branches missed.">        return winner == null;</span>
+    }
+
+    public Player getWinner() {
+<span class="nc" id="L131">        return winner;</span>
+    }
+
+    /**
+     * Starts the game loop.
+     */
+
+    public TileType takeTurn(int x, int y) {
+<span class="fc" id="L139">        var result = gameBoard.shoot(currentPlayer, x, y);</span>
+
+<span class="pc bpc" id="L141" title="1 of 2 branches missed.">        currentPlayer = (currentPlayer == Player.PLAYER) ? Player.COMPUTER : Player.PLAYER;</span>
+<span class="fc" id="L142">        checkWinner();</span>
+
+<span class="fc" id="L144">        return result;</span>
+    }
+
+
+    private void checkWinner() {
+<span class="pc bpc" id="L149" title="1 of 2 branches missed.">        var board = currentPlayer == Player.PLAYER ? gameBoard.computerBoard() : gameBoard.playerBoard();</span>
+
+<span class="fc" id="L151">        boolean gameOver = true;</span>
+
+<span class="fc bfc" id="L153" title="All 2 branches covered.">        for (int i = 0; i &lt; 10; i++) {</span>
+<span class="fc bfc" id="L154" title="All 2 branches covered.">            for (int j = 0; j &lt; 10; j++) {</span>
+<span class="pc bpc" id="L155" title="1 of 2 branches missed.">                if (board.get(i, j) == TileType.SHIP) {</span>
+<span class="nc" id="L156">                    gameOver = false;</span>
+<span class="nc" id="L157">                    break;</span>
+                }
+            }
+<span class="pc bpc" id="L160" title="1 of 2 branches missed.">            if (!gameOver) {</span>
+<span class="nc" id="L161">                break;</span>
+            }
+        }
+
+<span class="pc bpc" id="L165" title="1 of 2 branches missed.">        if (gameOver) {</span>
+<span class="fc" id="L166">            winner = currentPlayer;</span>
+        }
+<span class="fc" id="L168">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
