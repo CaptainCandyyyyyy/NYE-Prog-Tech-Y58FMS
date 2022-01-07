@@ -1,9 +1,14 @@
 hu\nye\progtech\torpedo\BattleShipsGame$1.class
 hu\nye\progtech\torpedo\GameBoard.class
-hu\nye\progtech\torpedo\TorpedoApplication.class
 hu\nye\progtech\torpedo\BattleShipsGame.class
-hu\nye\progtech\torpedo\BoardPopulator.class
 hu\nye\progtech\torpedo\TileType.class
+hu\nye\progtech\torpedo\TorpedoApplication$Config.class
+hu\nye\progtech\torpedo\GameResultRepository.class
+hu\nye\progtech\torpedo\TorpedoApplication.class
+hu\nye\progtech\torpedo\BoardPopulator.class
+hu\nye\progtech\torpedo\IGameResultService.class
+hu\nye\progtech\torpedo\GameResult.class
 hu\nye\progtech\torpedo\Main.class
+hu\nye\progtech\torpedo\GameResultService.class
 hu\nye\progtech\torpedo\Player.class
 hu\nye\progtech\torpedo\Board.class

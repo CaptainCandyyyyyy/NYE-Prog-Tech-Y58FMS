@@ -7,6 +7,10 @@ import javax.persistence.Id;
 
 import lombok.NoArgsConstructor;
 
+/**
+ * Starts the game loop.
+ */
+
 @Entity
 @NoArgsConstructor
 public class GameResult {
@@ -15,7 +19,7 @@ public class GameResult {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    public GameResult(String playerName, Boolean isWinner){
+    public GameResult(String playerName, Boolean isWinner) {
         this.playerName = playerName;
         this.isWinner = isWinner;
     }

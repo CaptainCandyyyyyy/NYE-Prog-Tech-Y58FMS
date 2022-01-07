@@ -5,12 +5,16 @@ import java.util.List;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
+/**
+ * Starts the game loop.
+ */
+
 @Service
 @NoArgsConstructor
 public class GameResultService implements IGameResultService {
     private GameResultRepository gameResultRepository;
 
-    public GameResultService(GameResultRepository gameResultRepository){
+    public GameResultService(GameResultRepository gameResultRepository) {
         this.gameResultRepository = gameResultRepository;
     }
 

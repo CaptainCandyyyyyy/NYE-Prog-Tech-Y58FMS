@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class Main {
     IGameResultService gameResultService;
+
     public Main(IGameResultService gameResultService) {
         this.gameResultService = gameResultService;
     }
@@ -83,11 +84,11 @@ public class Main {
     }
 
     /**
-     * Starts the game loop.
+     * Shows the Leaderboard.
      */
 
     public  void showLeaderboard() {
-        for (GameResult r:
+        for (GameResult r :
              this.gameResultService.listAll()) {
             System.out.println(r.getPlayerName() + ": " + r.isWinner());
         }
